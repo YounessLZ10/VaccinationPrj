@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Projet de Vaccination</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+  
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+  
+    .navbar {
+      
+      background-color: #555;
+      overflow: hidden;
+    }
+    .navbar a.right {
+    float: right; /* Move these links to the right */
+  }
+  
+    .navbar a {
+      float: left;
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+  
+    .navbar a:hover {
+      background-color: #000;
+    }
+  
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  
+    h1 {
+      margin: 0;
+    }
+  
+    p {
+      margin-top: 0;
+    }
+  
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  
+    .button:hover {
+      background-color: #555;
+    }
+  
+    .image-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+  </head>
+  
+  <body>
+    <header>
+      <h1>Projet de Vaccination</h1>
+      <div class="navbar">
+        <a href="{% url 'accueil' %}">Accueil</a>
+        <a href="/apropos">À propos</a>
+        <a href="{% url 'vaccination' %}">Vaccination</a>
+        <a href="/contact">Contact</a>
+        <a href="{% url 'login' %}" class="right">Login</a> <!-- Added "right" class -->
+      <a href="{% url 'register' %}" class="right">Sign Up</a> <!-- Added "right" class -->
+    </div>
+    </header>
+  
+
+  <div class="container">
+    <h2>Bienvenue sur notre projet de vaccination</h2>
+    <div class="image-container">
+      <img src="path/to/vaccination_image.jpg" alt="Vaccination">
+    </div>
+    <p>Nous sommes déterminés à fournir des vaccins sûrs et efficaces pour protéger notre communauté.</p>
+    <p>Rejoignez-nous dans notre mission pour éradiquer les maladies.</p>
+    <a href="{% url 'appointment' %}" class="button">Planifiez votre vaccination</a>
+  </div>
+</body>
+</html>

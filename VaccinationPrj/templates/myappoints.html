@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .card-header {
+            background-color: #4e73df;
+            color: white;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .table {
+            font-size: 14px;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .table-responsive::-webkit-scrollbar {
+            width: 0.5em;
+        }
+
+        .table-responsive::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 0.5rem;
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">My Appointments</p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
+                    <table class="table my-0" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Gender</th>
+                                <th>ID Card</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>Male</td>
+                                <td>123456789</td>
+                                <td>2023-06-01</td>
+                                <td>10:30 AM</td>
+                                <td><i class="material-icons" style="color: rgb(44, 252, 21);">Active</i></td>
+                                <td>
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"data-bs-target="#detailsModal">Details</button>
+                                    <button class="btn btn-danger" type="button" onclick="cancelAppointment(this)">Cancel</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel">Appointment Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li><strong>First Name:</strong> John</li>
+                        <li><strong>Last Name:</strong> Doe</li>
+                        <li><strong>Gender:</strong> Male</li>
+                        <li><strong>ID Card:</strong> 123456789</li>
+                        <li><strong>Date:</strong> 2023-06-01</li>
+                        <li><strong>Time:</strong> 10:30 AM</li>
+                        <li><strong>Status:</strong> Scheduled</li>
+                    </ul>
+               <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+    <script>
+        function cancelAppointment(button) {
+            // Change the status to "Canceled"
+            var row = button.parentNode.parentNode;
+            row.cells[6].innerHTML = '<i class="material-icons" style="color: rgb(252,21,21);">Canceled</i>';
+        }
+    </script>
+</body>
+
+</html>

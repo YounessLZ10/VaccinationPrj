@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Projet de Vaccination - À propos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .navbar {
+      background-color: #555;
+      overflow: hidden;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #000;
+    }
+    .navbar a.right {
+    float: right; /* Move these links to the right */
+  }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .button:hover {
+      background-color: #555;
+    }
+
+    .green-text {
+      color: #008000;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <h1>Projet de Vaccination</h1>
+        <div class="navbar">
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="/apropos">À propos</a>
+            <a href="{% url 'vaccination' %}">Vaccination</a>
+            <a href="/contact">Contact</a>
+            <a href="{% url 'login' %}" class="right">Login</a> <!-- Added "right" class -->
+          <a href="{% url 'register' %}" class="right">Sign Up</a> <!-- Added "right" class -->
+        </div>
+      </header>
+      <div class="container">
+        <h2>A propos</h2>
+        <p>
+          Bienvenue sur notre projet de vaccination. Notre mission est de faciliter et promouvoir la vaccination pour
+          protéger la santé de tous. Nous offrons des informations essentielles sur les vaccins, les calendriers de
+          vaccination recommandés et des ressources pour vous aider à prendre des décisions éclairées.
+        </p>
+        <p>
+          Notre plateforme vous permet de rechercher les centres de vaccination proches de chez vous, de prendre rendez-vous
+          en ligne et de suivre votre historique de vaccination. Nous nous engageons à assurer la confidentialité et la
+          sécurité de vos données personnelles.
+        </p>
+        <p>
+          N'hésitez pas à nous contacter si vous avez des questions, des commentaires ou des préoccupations. Nous sommes
+          ravis de vous aider et de contribuer à la promotion de la vaccination pour un avenir plus sain.
+        </p>
+        <p>Merci de faire partie de notre projet de vaccination.</p>
+      </div>
+</body>
+</html>

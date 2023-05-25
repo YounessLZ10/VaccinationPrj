@@ -17,6 +17,19 @@ class Vaccine(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+from django.db import models
+
+class Appointment(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    gender = models.CharField(max_length=10)
+    id_card = models.CharField(max_length=20)
+    date = models.DateField()
+    time = models.TimeField()
+    status = models.CharField(max_length=20)
+
+    # Add any additional methods or properties to the model as needed
+
 class User(models.Model):
     username = models.CharField(max_length=255)
     email = models.EmailField()

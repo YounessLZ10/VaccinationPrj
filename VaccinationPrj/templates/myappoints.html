@@ -136,78 +136,90 @@
             <a href="{% url 'login' %}" class="right">Login</a>
         </div>
     </header>
-
     <div class="container">
         <div class="card shadow">
-            <div class="card-header py-3">
-                <p class="text-primary m-0 fw-bold">My Appointments</p>
+          <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">My Appointments</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
+              <table class="table my-0" id="dataTable">
+                <thead>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>ID Card</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <!-- <tbody>
+                  {% for appointment in appointments %}
+                  <tr>
+                    <td>{{ appointment.first_name }}</td>
+                    <td>{{ appointment.last_name }}</td>
+                    <td>{{ appointment.gender }}</td>
+                    <td>{{ appointment.id_card }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+                    <td><i class="material-icons" style="color: #66BB6A;">{{ appointment.status }}</i></td>
+                    <td>
+                      <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detailsModal">Details</button>
+                      <button class="btn btn-danger" type="button" onclick="cancelAppointment(this)">Cancel</button>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody> -->
+                <tbody>
+                    <tr>
+                      <td>John</td>
+                      <td>Doe</td>
+                      <td>Male</td>
+                      <td>123456789</td>
+                      <td>2023-06-01</td>
+                      <td>10:30 AM</td>
+                      <td>Active</td>
+                      <td>
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detailsModal">Details</button>
+                        <button class="btn btn-danger" type="button" onclick="cancelAppointment(this)">Cancel</button>
+                      </td>
+                    </tr>
+                  </tbody>
+              </table>
             </div>
-            <div class="card-body">
-                <div class="table-responsive table mt-2" id="dataTable-2" role="grid"
-                    aria-describedby="dataTable_info">
-                    <table class="table my-0" id="dataTable">
-                        <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Gender</th>
-                                <th>ID Card</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>Male</td>
-                                <td>123456789</td>
-                                <td>2023-06-01</td>
-                                <td>10:30 AM</td>
-                                <td><i class="material-icons" style="color: #66BB6A;;">Active</i></td>
-                                <td>
-                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#detailsModal">Details</button>
-                                    <button class="btn btn-danger" type="button"
-                                        onclick="cancelAppointment(this)">Cancel</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+          </div>
         </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="detailsModalLabel">Appointment Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        <li><strong>First Name:</strong> John</li>
-                        <li><strong>Last Name:</strong> Doe</li>
-                        <li><strong>Gender:</strong> Male</li>
-                        <li><strong>ID Card:</strong> 123456789</li>
-                        <li><strong>Date:</strong> 2023-06-01</li>
-                        <li><strong>Time:</strong> 10:30 AM</li>
-                        <li><strong>Status:</strong> Scheduled</li>
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
+      </div>
+      <!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailsModalLabel">Appointment Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <ul>
+            <li><strong>First Name:</strong> {{ appointment.first_name }}</li>
+            <li><strong>Last Name:</strong> {{ appointment.last_name }}</li>
+            <li><strong>Gender:</strong> {{ appointment.gender }}</li>
+            <li><strong>ID Card:</strong> {{ appointment.id_card }}</li>
+            <li><strong>Date:</strong> {{ appointment.date }}</li>
+            <li><strong>Time:</strong> {{ appointment.time }}</li>
+            <li><strong>Status:</strong> {{ appointment.status }}</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
-
+  </div>
+  
+      
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>

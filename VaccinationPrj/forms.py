@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth.forms import AuthenticationForm
 
-class AuthenticationForm(AuthenticationForm):
+class CustomAuthenticationForm(AuthenticationForm):
     username = forms.CharField(
         max_length=150,
         widget=forms.TextInput(attrs={'placeholder': 'Username'})
@@ -31,22 +31,14 @@ class UserRegistrationForm(UserCreationForm):
         return user
 
         from django import forms
-from .models import Vaccine
 
-class VaccineForm(forms.ModelForm):
+
+from django import forms
+from .models import Appointment
+
+class AppointmentForm(forms.ModelForm):
+    status = forms.CharField(initial='active')
+
     class Meta:
-        model = Vaccine
-        fields = ['vaccine_type', 'date_of_vaccination', 'dosage']
-
-
-
-class Appointment:
-    def __init__(self, id, first_name, last_name, gender, id_card, date, time, status):
-        self.id = id
-        self.first_name = first_name
-        self.last_name = last_name
-        self.gender = gender
-        self.id_card = id_card
-        self.date = date
-        self.time = time
-        self.status = status
+        model = Appointment
+        fields = ['first_name', 'last_name', 'gender', 'id_card', 'date', 'time', 'status']

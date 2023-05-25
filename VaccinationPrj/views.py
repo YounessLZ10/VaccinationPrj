@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
-from .forms import UserRegistrationForm, VaccineForm
+from .forms import UserRegistrationForm
 from .models import Vaccine
 from django.db import models
 
@@ -19,19 +19,22 @@ def vaccination(request):
 
 def myappoints(request):
     return render(request, 'myappoints.html')
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import AppointmentForm
+
 def appoint(request):
     if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        date = request.POST.get('date')
-        time = request.POST.get('time')
-        # Save appointment details to the database or perform other actions
-
-        # Render a success page or redirect to a success URL
-        return HttpResponse('Appointment booked successfully!')
-    
-    return render(request, 'appoint.html')
-
+        form = AppointmentForm(request.POST)
+        if form.is_valid():
+            form.save()  # Save the appointment to the database
+            messages.success(request, 'Appointment booked successfully.')
+            return redirect('myappoints')
+    else:
+        form = AppointmentForm()
+        
+    return render(request, 'appoint.html', {'form': form})
 
 from django.shortcuts import render
 from django.views.generic import ListView
@@ -47,6 +50,14 @@ class VaccineListView(ListView):
 def apropos(request):
     return render(request, 'apropos.html')
 
+from django.shortcuts import render
+from .models import Appointment
+
+def my_appointments(request):
+    appointments = Appointment.objects.all()
+    context = {'appointments': appointments}
+    return render(request, 'myappoints.html', context)
+
 
 from django.shortcuts import render, get_object_or_404
 
@@ -60,17 +71,6 @@ def appointment_details(request, appointment_id):
 def contact(request):
     return render(request, 'contact.html')
 
-
-def get_queryset(self):
-        query = self.request.GET.get('search', '')
-        if query:
-            queryset = Vaccine.objects.filter(
-                Q(vaccine_type__icontains=query) |
-                Q(date_of_vaccination__icontains=query)
-            )
-        else:
-            queryset = Vaccine.objects.all().order_by('-date_of_vaccination')
-        return queryset
 
 
 
@@ -93,15 +93,14 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
-from django.contrib import messages
-from django.contrib.auth import authenticate, login
 from django.contrib.auth import authenticate, login as auth_login
+from django.shortcuts import render, redirect
 from django.contrib import messages
+from .forms import CustomAuthenticationForm
 
-LOGIN_REDIRECT_URL = 'accueil'
-def login_view(request):
+def login(request):
     if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
+        form = CustomAuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -117,27 +116,15 @@ def login_view(request):
                 # User credentials are incorrect, display an error message
                 messages.error(request, 'Invalid username or password.')
     else:
-        form = AuthenticationForm()
+        form = CustomAuthenticationForm(request)
         
-    return render(request, 'login', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 
 
-@login_required
+
 def logout(request):
     logout(request)
     return render(request, '/logout.html/')
 
-@login_required
-def vaccine_form(request):
-    if request.method == 'POST':
-        form = VaccineForm(request.POST)
-        if form.is_valid():
-            vaccine = form.save(commit=False)
-            vaccine.user = request.user
-            vaccine.save()
-            return redirect('vaccine_history')
-    else:
-        form = VaccineForm()
-    return render(request, 'vaccine_form.html', {'form': form})
 

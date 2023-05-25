@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from django.contrib.auth.forms import AuthenticationForm
 
-class LoginForm(AuthenticationForm):
+class AuthenticationForm(AuthenticationForm):
     username = forms.CharField(
         max_length=150,
         widget=forms.TextInput(attrs={'placeholder': 'Username'})

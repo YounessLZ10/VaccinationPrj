@@ -8,6 +8,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-image: url("https://www.cidrap.umn.edu/sites/default/files/styles/article_detail/public/article/Vials%20on%20conveyer.jpg?itok=zvgK448k");
       background-color: #f4f4f4;
     }
   
@@ -98,7 +99,8 @@
     </div>
     </header>
   
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <div class="container">
     <h2>Bienvenue sur notre projet de vaccination</h2>
     <div class="image-container">
@@ -107,6 +109,8 @@
     <p>Nous sommes déterminés à fournir des vaccins sûrs et efficaces pour protéger notre communauté.</p>
     <p>Rejoignez-nous dans notre mission pour éradiquer les maladies.</p>
     <a href="{% url 'appointment' %}" class="button">Planifiez votre vaccination</a>
+    <a href="{% url 'myappoints' %}" class="button">My appointments</a>
+
   </div>
 </body>
 </html>

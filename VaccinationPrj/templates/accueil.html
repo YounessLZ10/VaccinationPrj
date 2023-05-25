@@ -8,6 +8,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-image: url("https://www.cidrap.umn.edu/sites/default/files/styles/article_detail/public/article/Vials%20on%20conveyer.jpg?itok=zvgK448k");
       background-color: #f4f4f4;
     }
   
@@ -19,13 +20,13 @@
     }
   
     .navbar {
-      
       background-color: #555;
       overflow: hidden;
     }
+  
     .navbar a.right {
-    float: right; /* Move these links to the right */
-  }
+      float: right;
+    }
   
     .navbar a {
       float: left;
@@ -60,7 +61,7 @@
     .button {
       display: inline-block;
       padding: 10px 20px;
-      background-color: #333;
+      background-color: #45a049;
       color: #fff;
       text-decoration: none;
       border-radius: 5px;
@@ -79,31 +80,101 @@
       max-width: 100%;
       height: auto;
     }
+    h2,h3{
+      text-align: center;
+        }
+    footer {
+      background-color: #555;
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-section {
+      width: calc(33.33% - 20px);
+      margin-bottom: 20px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer-section p {
+      margin: 0;
+    }
   </style>
-  </head>
-  
-  <body>
-    <header>
-      <h1>Projet de Vaccination</h1>
-      <div class="navbar">
-        <a href="{% url 'accueil' %}">Accueil</a>
-        <a href="/apropos">À propos</a>
-        <a href="{% url 'vaccination' %}">Vaccination</a>
-        <a href="/contact">Contact</a>
-        <a href="{% url 'login' %}" class="right">Login</a> <!-- Added "right" class -->
-      <a href="{% url 'register' %}" class="right">Sign Up</a> <!-- Added "right" class -->
+</head>
+<body>
+  <header>
+    <h1>Projet de Vaccination</h1>
+    <div class="navbar">
+      <a href="{% url 'accueil' %}">Accueil</a>
+      <a href="/apropos">À propos</a>
+      <a href="{% url 'vaccination' %}">Vaccination</a>
+      <a href="/contact">Contact</a>
+      <a href="{% url 'login' %}" class="right">Login</a>
+      <a href="{% url 'register' %}" class="right">Sign Up</a>
     </div>
-    </header>
-  
+  </header>
 
   <div class="container">
     <h2>Bienvenue sur notre projet de vaccination</h2>
     <div class="image-container">
-      <img src="path/to/vaccination_image.jpg" alt="Vaccination">
+      <img src="https://www.saint-flour.net/wp-content/uploads/2021/04/vaccin-covid-19.jpg" alt="Vaccination" style="max-width: 30%; height: auto;">
     </div>
     <p>Nous sommes déterminés à fournir des vaccins sûrs et efficaces pour protéger notre communauté.</p>
     <p>Rejoignez-nous dans notre mission pour éradiquer les maladies.</p>
-    <a href="{% url 'appointment' %}" class="button">Planifiez votre vaccination</a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <h3>Nos services</h3>
+    <div class="image-container">
+      <img src="https://brookmedical.com.au/wp-content/uploads/Book-your-vaccination-appointment.jpg" alt="Services" style="max-width: 27%; height: auto;">
+
+    </div>
+    <p>Nous proposons une gamme complète de services de vaccination pour répondre à vos besoins spécifiques.</p>
+    <p>Notre équipe de professionnels qualifiés est là pour vous aider.</p>
+    <a href="{% url 'vaccination' %}" class="button">Planifiez votre vaccination</a>
+
+    <h3>Notre engagement</h3>
+    <div class="image-container">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXMFLgzozt_16KdEc902LV0-ZRGDFQcuMJt8wnvnWaA-MTE1JASbXtbcAjb3R4zT2r21o&usqp=CAU" alt="Engagement" style="max-width: 50%; height: auto;">
+    </div>
+    <p>Nous nous engageons à fournir des vaccins de haute qualité et à promouvoir la santé et le bien-être de notre communauté.</p>
+    <p>Votre sécurité est notre priorité.</p>
   </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>À propos</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque turpis nec tortor finibus, sit amet sodales nunc posuere.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Coordonnées</h3>
+        <p>Adresse : 123 Rue de Vaccination, Ville, Pays</p>
+        <p>Téléphone : +1 234 567 890</p>
+        <p>Email : info@vaccination.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Réseaux sociaux</h3>
+        <p>Suivez-nous sur les réseaux sociaux pour rester à jour avec nos dernières nouvelles et mises à jour.</p>
+        <div class="social-media-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <p>&copy; 2023 Projet de Vaccination. Tous droits réservés.</p>
+  </footer>
 </body>
 </html>

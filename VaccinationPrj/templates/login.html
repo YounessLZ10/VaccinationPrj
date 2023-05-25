@@ -1,6 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <title>Projet de Vaccination</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("https://www.cidrap.umn.edu/sites/default/files/styles/article_detail/public/article/Vials%20on%20conveyer.jpg?itok=zvgK448k");
+      background-color: #f4f4f4;
+    }
+  
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+  
+    .navbar {
+      
+      background-color: #555;
+      overflow: hidden;
+    }
+    .navbar a.right {
+    float: right; /* Move these links to the right */
+  }
+  
+    .navbar a {
+      float: left;
+      display: block;
+      color: #fff;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+  
+    .navbar a:hover {
+      background-color: #000;
+    }
+  
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  
+    h1 {
+      margin: 0;
+    }
+  
+    p {
+      margin-top: 0;
+    }
+  
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  
+    .button:hover {
+      background-color: #555;
+    }
+  
+    .image-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+  </head>
+  
+  <body>
+    <header>
+      <h1>Projet de Vaccination</h1>
+      <div class="navbar">
+        <a href="{% url 'accueil' %}">Accueil</a>
+        <a href="/apropos">À propos</a>
+        <a href="{% url 'vaccination' %}">Vaccination</a>
+        <a href="/contact">Contact</a>
+        <a href="{% url 'login' %}" class="right">Login</a> <!-- Added "right" class -->
+      <a href="{% url 'register' %}" class="right">Sign Up</a> <!-- Added "right" class -->
+    </div>
+    </header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<head>
   <title>Vaccination Project - Login</title>
   <style>
     body {

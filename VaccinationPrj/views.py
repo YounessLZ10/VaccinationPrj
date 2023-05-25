@@ -95,8 +95,11 @@ def register(request):
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import messages
 
-def login(request):
+LOGIN_REDIRECT_URL = 'accueil'
+def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
@@ -108,15 +111,16 @@ def login(request):
             
             if user is not None:
                 # User credentials are correct, log in the user
-                login(request, user)
-                return redirect('accueil.html')
+                auth_login(request, user)
+                return redirect('accueil')
             else:
                 # User credentials are incorrect, display an error message
                 messages.error(request, 'Invalid username or password.')
     else:
         form = AuthenticationForm()
         
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'login', {'form': form})
+
 
 
 @login_required
@@ -137,7 +141,3 @@ def vaccine_form(request):
         form = VaccineForm()
     return render(request, 'vaccine_form.html', {'form': form})
 
-@login_required
-def vaccine_history(request):
-    vaccines = Vaccine.objects.filter(user=request.user).order_by('-date_of_vaccination')
-    return render(request, 'vaccine_history.html', {'vaccines': vaccines})

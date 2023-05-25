@@ -1,13 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Appointments</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Projet de Vaccination</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://www.cidrap.umn.edu/sites/default/files/styles/article_detail/public/article/Vials%20on%20conveyer.jpg?itok=zvgK448k");
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #555;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a.right {
+            
+            float: right;
+        }
+
+        .navbar a:hover {
+            background-color: #000;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        p {
+            margin-top: 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Additional CSS from the second page */
         .card-header {
             background-color: #4e73df;
             color: white;
@@ -44,16 +120,31 @@
             background-color: #555;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
-    <div class="container-fluid">
+    <header>
+        <h1>Projet de Vaccination</h1>
+        <div class="navbar">
+            <a href="{% url 'accueil' %}">Accueil</a>
+            <a href="/apropos">À propos</a>
+            <a href="{% url 'vaccination' %}">Vaccination</a>
+            <a href="/contact">Contact</a>
+            <a href="{% url 'register' %}" class="right">Sign Up</a>
+            <a href="{% url 'login' %}" class="right">Login</a>
+        </div>
+    </header>
+
+    <div class="container">
         <div class="card shadow">
             <div class="card-header py-3">
                 <p class="text-primary m-0 fw-bold">My Appointments</p>
             </div>
             <div class="card-body">
-                <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
+                <div class="table-responsive table mt-2" id="dataTable-2" role="grid"
+                    aria-describedby="dataTable_info">
                     <table class="table my-0" id="dataTable">
                         <thead>
                             <tr>
@@ -75,21 +166,24 @@
                                 <td>123456789</td>
                                 <td>2023-06-01</td>
                                 <td>10:30 AM</td>
-                                <td><i class="material-icons" style="color: rgb(44, 252, 21);">Active</i></td>
+                                <td><i class="material-icons" style="color: #66BB6A;;">Active</i></td>
                                 <td>
-                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"data-bs-target="#detailsModal">Details</button>
-                                    <button class="btn btn-danger" type="button" onclick="cancelAppointment(this)">Cancel</button>
+                                    <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#detailsModal">Details</button>
+                                    <button class="btn btn-danger" type="button"
+                                        onclick="cancelAppointment(this)">Cancel</button>
                                 </td>
                             </tr>
                         </tbody>
-                    </table
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -106,7 +200,8 @@
                         <li><strong>Time:</strong> 10:30 AM</li>
                         <li><strong>Status:</strong> Scheduled</li>
                     </ul>
-               <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>

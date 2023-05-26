@@ -119,17 +119,21 @@
   </style>
 </head>
 <body>
-    <header>
-        <h1>Projet de Vaccination</h1>
-        <div class="navbar">
-            <a href="{% url 'accueil' %}">Accueil</a>
-            <a href="/apropos">À propos</a>
-            <a href="{% url 'vaccination' %}">Vaccination</a>
-            <a href="/contact">Contact</a>
-            <a href="{% url 'login' %}" class="right">Login</a> <!-- Added "right" class -->
-          <a href="{% url 'register' %}" class="right">Sign Up</a> <!-- Added "right" class -->
-        </div>
-      </header>
+  <header>
+    <h1>Projet de Vaccination</h1>
+    <div class="navbar">
+      <a href="{% url 'accueil' %}">Accueil</a>
+      <a href="/apropos">À propos</a>
+      <a href="{% url 'vaccination' %}">Vaccination</a>
+      <a href="/contact">Contact</a>
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}" class="right">Sign Out</a>
+    {% else %}
+      <a href="{% url 'login' %}" class="right hide-on-authenticated">Login</a>
+      <a href="{% url 'register' %}" class="right hide-on-authenticated">Sign Up</a>
+    {% endif %}
+    </div>
+  </header>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <div class="container">

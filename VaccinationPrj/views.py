@@ -33,7 +33,7 @@ def appoint(request):
             return redirect('myappoints')
     else:
         form = AppointmentForm()
-        
+        print(form.errors)
     return render(request, 'appoint.html', {'form': form})
 
 from django.shortcuts import render

@@ -16,9 +16,15 @@ def accueil(request):
 
 def vaccination(request):
     return render(request, 'vaccination.html')
-
 def myappoints(request):
-    return render(request, 'myappoints.html')
+    appointments = Appointment.objects.all()
+
+    context = {
+        'Appointments': appointments,
+    }
+
+    return render(request, 'myappoints.html', context)
+
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -27,6 +33,7 @@ from .forms import AppointmentForm
 def appoint(request):
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
+        print(form.errors)
         if form.is_valid():
             form.save()  # Save the appointment to the database
             messages.success(request, 'Appointment booked successfully.')

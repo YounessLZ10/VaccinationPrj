@@ -160,80 +160,46 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <!-- <tbody>
-                  {% for appointment in appointments %}
+                <tbody>
+                  {% for Appointment in Appointments %}
                   <tr>
-                    <td>{{ appointment.first_name }}</td>
-                    <td>{{ appointment.last_name }}</td>
-                    <td>{{ appointment.gender }}</td>
-                    <td>{{ appointment.id_card }}</td>
-                    <td>{{ appointment.date }}</td>
-                    <td>{{ appointment.time }}</td>
-                    <td><i class="material-icons" style="color: #66BB6A;">{{ appointment.status }}</i></td>
+                    <td>{{ Appointment.first_name }}</td>
+                    <td>{{ Appointment.last_name }}</td>
+                    <td>{{ Appointment.gender }}</td>
+                    <td>{{ Appointment.id_card }}</td>
+                    <td>{{ Appointment.date }}</td>
+                    <td>{{ Appointment.time }}</td>
+                    <td><i class="material-icons" style="color: #66BB6A;">{{ Appointment.status }}</i></td>
                     <td>
-                      <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detailsModal">Details</button>
                       <button class="btn btn-danger" type="button" onclick="cancelAppointment(this)">Cancel</button>
                     </td>
                   </tr>
                   {% endfor %}
-                </tbody> -->
-                <tbody>
-                    <tr>
-                      <td>John</td>
-                      <td>Doe</td>
-                      <td>Male</td>
-                      <td>123456789</td>
-                      <td>2023-06-01</td>
-                      <td>10:30 AM</td>
-                      <td>Active</td>
-                      <td>
-                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#detailsModal">Details</button>
-                        <button class="btn btn-danger" type="button" onclick="cancelAppointment(this)">Cancel</button>
-                      </td>
-                    </tr>
-                  </tbody>
+                </tbody>
+                
               </table>
             </div>
           </div>
         </div>
       </div>
       <!-- Modal -->
-<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="detailsModalLabel">Appointment Details</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <ul>
-            <li><strong>First Name:</strong> John{{ appointment.first_name }}</li>
-            <li><strong>Last Name:</strong> Doe {{ appointment.last_name }}</li>
-            <li><strong>Gender:</strong> Male  {{ appointment.gender }}</li>
-            <li><strong>ID Card:</strong> 123456789 {{ appointment.id_card }}</li>
-            <li><strong>Date:</strong> 2023-06-01 {{ appointment.date }}</li>
-            <li><strong>Time:</strong> 10:30 AM {{ appointment.time }}</li>
-            <li><strong>Status:</strong> Active {{ appointment.status }}</li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
   
       
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
     <script>
-        function cancelAppointment(button) {
-            // Change the status to "Canceled"
-            var row = button.parentNode.parentNode;
-            row.cells[6].innerHTML = '<i class="material-icons" style="color: rgb(252,21,21);">Canceled</i>';
+      function cancelAppointment(button) {
+        var confirmation = confirm("Are you sure you want to cancel this appointment?");
+    
+        if (confirmation) {
+          // Change the status to "Canceled"
+          var row = button.parentNode.parentNode;
+          row.cells[6].innerHTML = '<i class="material-icons" style="color: rgb(252,21,21);">Canceled</i>';
         }
+      }
     </script>
+    
 </body>
 
 </html>

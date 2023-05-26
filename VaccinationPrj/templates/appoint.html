@@ -163,12 +163,12 @@
     <form method="post" action="{% url 'appointment' %}">
       {% csrf_token %}
       <div class="form-group">
-        <label for="first-name">First Name:</label>
-        <input type="text" id="first-name" name="first-name" required>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
       </div>
       <div class="form-group">
-        <label for="last-name">Last Name:</label>
-        <input type="text" id="last-name" name="last-name" required>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
       </div>
       <div class="form-group">
         <label for="gender">Gender:</label>
@@ -191,11 +191,11 @@
         <label for="time">Time:</label>
         <select id="time" name="time" required>
           <option value="">Select a time slot</option>
-          <option value="10:00 AM">10:00 AM</option>
-          <option value="11:00 AM">11:00 AM</option>
-          <option value="12:00 PM">12:00 PM</option>
-          <option value="1:00 PM">1:00 PM</option>
-          <option value="2:00 PM">2:00 PM</option>
+          <option value="10:00">10:00 AM</option>
+          <option value="11:00">11:00 AM</option>
+          <option value="12:00">12:00 PM</option>
+          <option value="13:00">01:00 PM</option>
+          <option value="14:00">02:00 PM</option>
         </select>
       </div>
       <div class="form-group">
